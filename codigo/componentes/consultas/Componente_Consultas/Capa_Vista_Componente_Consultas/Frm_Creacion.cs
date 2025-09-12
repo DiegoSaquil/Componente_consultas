@@ -59,5 +59,10 @@ namespace Capa_Vista_Componente_Consultas
             else
                 this.WindowState = FormWindowState.Normal;
         }
+
+        private void lstCampos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

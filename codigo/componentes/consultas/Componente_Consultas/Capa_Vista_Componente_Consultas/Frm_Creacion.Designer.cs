@@ -347,6 +347,7 @@ namespace Capa_Vista_Componente_Consultas
             this.lstCampos.Name = "lstCampos";
             this.lstCampos.Size = new System.Drawing.Size(261, 82);
             this.lstCampos.TabIndex = 4;
+            this.lstCampos.SelectedIndexChanged += new System.EventHandler(this.lstCampos_SelectedIndexChanged);
             // 
             // btnAgregarCampo
             // 

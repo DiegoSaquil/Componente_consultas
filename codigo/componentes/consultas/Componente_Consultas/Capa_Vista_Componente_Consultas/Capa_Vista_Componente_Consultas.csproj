@@ -49,6 +49,12 @@
     <Compile Include="Consulta_Compleja.Designer.cs">
       <DependentUpon>Consulta_Compleja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Eliminacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Eliminacion.Designer.cs">
+      <DependentUpon>Frm_Eliminacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Creacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_editar.resx">
       <DependentUpon>Frm_editar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Eliminacion.resx">
+      <DependentUpon>Frm_Eliminacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
