@@ -240,38 +240,54 @@ namespace Capa_Vista_Componente_Consultas
         // ----------------------------------------------------------------------------------------- //
 
         // Realizado por:Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025
+        // Evento click del botón Eliminar
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
+            // Evita reentradas si ya hay una operación UI en curso
             if (_uiBusy) return;
-            _uiBusy = true;
+            _uiBusy = true; // Marca la UI como ocupada
             try
             {
+                // Obtiene el Id seleccionado en la lista de consultas
                 var id = Lst_Querys.SelectedValue as string;
+
+                // Si no hay elemento seleccionado, avisa y termina
                 if (string.IsNullOrEmpty(id)) { MessageBox.Show("Selecciona una consulta de la lista."); return; }
 
+                // Recupera (Nombre, Sql) de la consulta
                 var data = _ctrl.GetQuery(id);
-                if (data == null) return;
+                if (data == null) return; // Si no existe, no hace nada
 
+                // Crea un cuadro de diálogo de confirmación "a mano" (sin diseñador)
                 using (var dlg = new Form())
                 {
                     dlg.Text = "Confirmación";
-                    dlg.StartPosition = FormStartPosition.CenterParent;
+                    dlg.StartPosition = FormStartPosition.CenterParent; // Centrado respecto a la ventana padre
                     dlg.Width = 460; dlg.Height = 180;
-                    dlg.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    dlg.MaximizeBox = false; dlg.MinimizeBox = false;
+                    dlg.FormBorderStyle = FormBorderStyle.FixedDialog; // Diálogo con borde fijo
+                    dlg.MaximizeBox = false; dlg.MinimizeBox = false;  // Sin maximizar/minimizar
 
+                    // Mensaje con el nombre de la consulta a eliminar (data.Item1 = Name)
                     var lbl = new Label { Left = 12, Top = 12, Width = 420, Height = 60, Text = "¿Seguro que deseas eliminar esta consulta?\n\n" + data.Item1 };
+
+                    // Botón para confirmar eliminación
                     var btnEliminar = new Button { Text = "Eliminar consulta", Left = 180, Top = 90, Width = 130, DialogResult = DialogResult.OK };
+
+                    // Botón para cancelar
                     var btnCancel = new Button { Text = "Cancelar", Left = 320, Top = 90, Width = 100, DialogResult = DialogResult.Cancel };
 
+                    // Agrega controles al formulario de confirmación
                     dlg.Controls.Add(lbl);
                     dlg.Controls.Add(btnEliminar);
                     dlg.Controls.Add(btnCancel);
                     dlg.AcceptButton = btnEliminar; dlg.CancelButton = btnCancel;
 
+                    // Muestra el diálogo de forma modal respecto a esta ventana
                     if (dlg.ShowDialog(this) == DialogResult.OK)
                     {
+                        // Si el usuario confirmó, elimina la consulta
                         _ctrl.DeleteQuery(id);
+                        // Si el SQL mostrado coincide con el de la consulta eliminada, limpia el editor y la grilla
                         if (Txt_Sql.Text == data.Item2) { Txt_Sql.Clear(); Dgv_Sql.DataSource = null; }
                     }
                 }
@@ -279,34 +295,43 @@ namespace Capa_Vista_Componente_Consultas
             finally { _uiBusy = false; }
         }
 
+        // Evento click del botón "Consultas simples" (abre otro formulario modal)
         private void Btn_consimple_Click(object sender, EventArgs e)
         {
+            // Crea y muestra el formulario de consultas
             using (var f = new Frm_Consultas())
             {
-                this.Hide();
-                f.ShowDialog(this);
-                this.Show();
+                this.Hide();          // Oculta la ventana actual mientras el otro formulario está visible
+                f.ShowDialog(this);   // Muestra de forma modal
+                this.Show();          // Vuelve a mostrar esta ventana al cerrar el modal
             }
         }
 
+        // Evento click del botón "Regresar" (vuelve a mostrar el Owner si existe y cierra esta ventana)
         private void Btn_regresar_Click(object sender, EventArgs e)
         {
-            if (this.Owner != null) this.Owner.Show();
-            this.Close();
+            if (this.Owner != null) this.Owner.Show(); // Si hay ventana propietaria, la muestra
+            this.Close();                               // Cierra la ventana actual
         }
 
+        // Cambia el estado de la ventana a minimizado
         private void Btn_min_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
 
+        // Evento click del botón maximizar/restaurar
         private void Btn_max_Click(object sender, EventArgs e)
         {
+            // Alterna entre estado normal y maximizado
             this.WindowState = (this.WindowState == FormWindowState.Normal) ? FormWindowState.Maximized : FormWindowState.Normal;
         }
 
+        // Override del evento de cierre del formulario
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
+            // Llama a la implementación base
             base.OnFormClosed(e);
         }
 
+        // Manejador del click sobre la etiqueta Lbl_Tabla (por ahora sin implementación)
         private void Lbl_Tabla_Click(object sender, EventArgs e)
         {
 

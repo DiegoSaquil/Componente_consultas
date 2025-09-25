@@ -101,27 +101,40 @@ namespace Capa_Controlador_Consultas
 
         #endregion
         #region Ejecución de consultas
-       
+
         // Realizado por: Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025
+        // Intenta ejecutar una consulta SELECT y devuelve true/false según éxito.
+        // Si tiene éxito, 'result' contendrá un DataTable con los datos.
+        // Si falla, 'error' contendrá el mensaje de error.
         public bool TryEjecutarConsulta(string sql, out DataTable result, out string error)
         {
+            // Inicializa los parámetros de salida
             result = null;
             error = null;
 
+
+            // Valida la consulta (por ejemplo, evitar comandos peligrosos o sintaxis inválida)
             if (!ValidarConsulta(sql, out var razon))
             {
-                error = razon;
-                return false;
+                error = razon;      // Explica por qué no pasó la validación
+                return false;       // Termina con fallo
             }
 
             try
             {
+                // Reescribe SELECT * a una forma compatible con ODBC y/o con el esquema (_db)
+                // (por ejemplo, expandir * por columnas, calificar con la BD, etc.)
                 var sqlSeguro = RewriteSelectAllForOdbc(sql, _db);
+
+                // Ejecuta el SELECT (quitando ';' final y espacios si los hay) y llena el DataTable
                 result = _repo.EjecutarSelect(sqlSeguro.TrimEnd(new[] { ';', ' ' }));
+
+                // Éxito
                 return true;
             }
             catch (System.Data.Odbc.OdbcException ex)
             {
+                // Caso particular: error típico cuando una columna TIME supera 24h (ODBC no lo soporta bien)
                 if (ex.Message.IndexOf("Invalid time(hours)", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     error =
@@ -130,49 +143,58 @@ namespace Capa_Controlador_Consultas
                 }
                 else
                 {
+                    // Otros errores ODBC: se devuelve el mensaje de la excepción
                     error = "Error al ejecutar la consulta:\n" + ex.Message;
                 }
-                return false;
+                return false; // Fallo
             }
             catch (Exception ex)
             {
+                // Cualquier otro error no controlado
                 error = "Error inesperado al ejecutar la consulta:\n" + ex.Message;
-                return false;
+                return false; // Fallo
             }
         }
+        // Intenta previsualizar una consulta almacenada (por Id).
+        // Carga la consulta por Id y reutiliza TryEjecutarConsulta.
         public bool TryPreviewById(string id, out DataTable result, out string error)
         {
             result = null; error = null;
+            // Recupera (Nombre, Sql) de la consulta persistida
             var data = GetQuery(id);
             if (data == null) { error = "Consulta no encontrada."; return false; }
+            // Ejecuta la SQL asociada al Id
             return TryEjecutarConsulta(data.Item2, out result, out error);
         }
         #endregion
         #region CRUD sobre Queries (persistidas en XML)
+        // Agrega una nueva consulta a la tabla en memoria 'Queries'
         public DataRow AddQuery(string name, string sql)
         {
             var row = Queries.NewRow();
-            row["Id"] = Guid.NewGuid().ToString();
-            row["Name"] = string.IsNullOrWhiteSpace(name) ? "Consulta" : name;
-            row["Sql"] = sql ?? string.Empty;
-            Queries.Rows.Add(row);
+            row["Id"] = Guid.NewGuid().ToString();                          // Identificador único
+            row["Name"] = string.IsNullOrWhiteSpace(name) ? "Consulta" : name; // Nombre visible
+            row["Sql"] = sql ?? string.Empty;                               // Texto SQL
+            Queries.Rows.Add(row);                                          // Inserta en el DataTable
             return row;
         }
-
+        // Actualiza una consulta existente (si existe)
         public void UpdateQuery(string id, string name, string sql)
         {
-            var row = FindById(id);
-            if (row == null) return;
-            row["Name"] = string.IsNullOrWhiteSpace(name) ? "Consulta" : name;
-            row["Sql"] = sql ?? string.Empty;
+            var row = FindById(id);      // Busca por Id
+            if (row == null) return;     // No existe → no hace nada
+
+            row["Name"] = string.IsNullOrWhiteSpace(name) ? "Consulta" : name; // Actualiza nombre
+            row["Sql"] = sql ?? string.Empty;                                   // Actualiza SQL
         }
 
+        // Elimina una consulta persistida por Id (si existe)
         public void DeleteQuery(string id)
         {
             var row = FindById(id);
             if (row != null) row.Delete();
         }
-
+        // Devuelve (Name, Sql) de una consulta por Id, o null si no existe
         public Tuple<string, string> GetQuery(string id)
         {
             var row = FindById(id);
@@ -183,6 +205,7 @@ namespace Capa_Controlador_Consultas
             );
         }
 
+        // Busca una fila por Id dentro del DataTable 'Queries'
         private DataRow FindById(string id)
         {
             foreach (DataRow r in Queries.Rows)
@@ -191,39 +214,45 @@ namespace Capa_Controlador_Consultas
             return null;
         }
 
+        // Construye la estructura del DataTable 'Queries' (esquema en memoria)
         private static DataTable BuildTable()
         {
             var dt = new DataTable("Queries");
-            dt.Columns.Add("Id", typeof(string));
-            dt.Columns.Add("Name", typeof(string));
-            dt.Columns.Add("Sql", typeof(string));
+            dt.Columns.Add("Id", typeof(string)); // Identificador único
+            dt.Columns.Add("Name", typeof(string)); // Nombre de la consulta
+            dt.Columns.Add("Sql", typeof(string)); // Texto SQL
             return dt;
         }
 
+        // Carga las consultas desde el archivo XML a 'Queries'
         private void LoadQueries()
         {
             try
             {
+                // Si no existe el archivo, no hay nada que cargar
                 if (!File.Exists(_filePathXml)) return;
 
                 var ds = new DataSet();
-                ds.ReadXml(_filePathXml);
+                ds.ReadXml(_filePathXml); // Lee todo el XML en un DataSet
 
-                Queries.Clear();
+                Queries.Clear();          // Limpia las filas actuales en memoria
 
                 DataTable t = null;
+
+                // Busca explícitamente la tabla llamada "Queries"
                 foreach (DataTable dt in ds.Tables)
                 {
                     if (string.Equals(dt.TableName, "Queries", StringComparison.OrdinalIgnoreCase))
                     { t = dt; break; }
                 }
+                // Si no se encontró pero hay tablas, toma la primera como fallback
                 if (t == null && ds.Tables.Count > 0) t = ds.Tables[0];
                 if (t == null) return;
-
+                // Asegura que existan las columnas esperadas
                 if (!t.Columns.Contains("Id")) t.Columns.Add("Id", typeof(string));
                 if (!t.Columns.Contains("Name")) t.Columns.Add("Name", typeof(string));
                 if (!t.Columns.Contains("Sql")) t.Columns.Add("Sql", typeof(string));
-
+                // Copia fila por fila a la tabla en memoria 'Queries'
                 foreach (DataRow r in t.Rows)
                 {
                     var n = Queries.NewRow();
@@ -239,14 +268,15 @@ namespace Capa_Controlador_Consultas
             }
         }
 
+        // Guarda las consultas del DataTable 'Queries' al archivo XML
         private void SaveQueries()
         {
             try
             {
                 var ds = new DataSet("Store");
-                ds.Tables.Add(Queries.Copy());
-                ds.Tables[0].TableName = "Queries";
-                ds.WriteXml(_filePathXml, XmlWriteMode.WriteSchema);
+                ds.Tables.Add(Queries.Copy());            // Copia la tabla actual
+                ds.Tables[0].TableName = "Queries";       // Asegura el nombre de tabla en XML
+                ds.WriteXml(_filePathXml, XmlWriteMode.WriteSchema); // Escribe con esquema
             }
             catch
             {
