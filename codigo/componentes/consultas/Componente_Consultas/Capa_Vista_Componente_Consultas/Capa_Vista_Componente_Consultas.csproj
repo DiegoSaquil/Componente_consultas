@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Componente_Consultas">
+      <HintPath>..\Capa_Controlador_Componente_Consultas\bin\Debug\Capa_Controlador_Componente_Consultas.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,17 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consulta_Compleja.cs">
+    <Compile Include="Frm_Consulta_Compleja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Consulta_Compleja.Designer.cs">
-      <DependentUpon>Consulta_Compleja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_Creacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Creacion.Designer.cs">
-      <DependentUpon>Frm_Creacion.cs</DependentUpon>
+    <Compile Include="Frm_Consulta_Compleja.Designer.cs">
+      <DependentUpon>Frm_Consulta_Compleja.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Consultas.cs">
       <SubType>Form</SubType>
@@ -61,11 +58,11 @@
     <Compile Include="Frm_Consultas.Designer.cs">
       <DependentUpon>Frm_Consultas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_editar.cs">
+    <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_editar.Designer.cs">
-      <DependentUpon>Frm_editar.cs</DependentUpon>
+    <Compile Include="Frm_Principal.Designer.cs">
+      <DependentUpon>Frm_Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -75,17 +72,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Consulta_Compleja.resx">
-      <DependentUpon>Consulta_Compleja.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Consulta_Compleja.resx">
+      <DependentUpon>Frm_Consulta_Compleja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Consultas.resx">
       <DependentUpon>Frm_Consultas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Creacion.resx">
-      <DependentUpon>Frm_Creacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_editar.resx">
-      <DependentUpon>Frm_editar.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Principal.resx">
+      <DependentUpon>Frm_Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +94,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-cancel-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoquantum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2025-09-17 215653.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2025-09-17 2156531.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\savetheapplication_guardar_2958.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

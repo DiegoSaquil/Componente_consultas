@@ -29,195 +29,229 @@ namespace Capa_Vista_Componente_Consultas
         /// </summary>
         private void InitializeComponent()
         {
-            this.gpb_Listado = new System.Windows.Forms.GroupBox();
-            this.txt_Consulta = new System.Windows.Forms.TextBox();
-            this.lbl_Cadena_Generada = new System.Windows.Forms.Label();
-            this.lbl_Query = new System.Windows.Forms.Label();
-            this.btnQuitarCampo = new System.Windows.Forms.Button();
-            this.cbo_Query = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Gpb_Listado = new System.Windows.Forms.GroupBox();
+            this.Gpb_Ordenamiento = new System.Windows.Forms.GroupBox();
+            this.Rdb_ASC = new System.Windows.Forms.RadioButton();
+            this.Rdb_Opcion1 = new System.Windows.Forms.RadioButton();
+            this.Txt_Consulta = new System.Windows.Forms.TextBox();
+            this.Lbl_Cadena_Generada = new System.Windows.Forms.Label();
+            this.Lbl_Query = new System.Windows.Forms.Label();
+            this.Btn_buscar = new System.Windows.Forms.Button();
+            this.Cbo_Query = new System.Windows.Forms.ComboBox();
+            this.Dgv_Consultas_Simples = new System.Windows.Forms.DataGridView();
             this.Mstp_Consultas = new System.Windows.Forms.MenuStrip();
-            this.creaciònToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_cerrar = new System.Windows.Forms.Button();
-            this.btn_min = new System.Windows.Forms.Button();
-            this.btn_max = new System.Windows.Forms.Button();
-            this.gpb_Listado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.Mstp_Consultas.SuspendLayout();
+            this.Btn_Min = new System.Windows.Forms.Button();
+            this.Btn_Boton1 = new System.Windows.Forms.Button();
+            this.Btn_Boton2 = new System.Windows.Forms.Button();
+            this.Btn_Max = new System.Windows.Forms.Button();
+            this.Gpb_Listado.SuspendLayout();
+            this.Gpb_Ordenamiento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Consultas_Simples)).BeginInit();
             this.SuspendLayout();
             // 
-            // gpb_Listado
+            // Gpb_Listado
             // 
-            this.gpb_Listado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Gpb_Listado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpb_Listado.Controls.Add(this.txt_Consulta);
-            this.gpb_Listado.Controls.Add(this.lbl_Cadena_Generada);
-            this.gpb_Listado.Controls.Add(this.lbl_Query);
-            this.gpb_Listado.Controls.Add(this.btnQuitarCampo);
-            this.gpb_Listado.Controls.Add(this.cbo_Query);
-            this.gpb_Listado.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpb_Listado.Location = new System.Drawing.Point(0, 26);
-            this.gpb_Listado.Name = "gpb_Listado";
-            this.gpb_Listado.Size = new System.Drawing.Size(752, 115);
-            this.gpb_Listado.TabIndex = 5;
-            this.gpb_Listado.TabStop = false;
-            this.gpb_Listado.Text = "m";
+            this.Gpb_Listado.Controls.Add(this.Gpb_Ordenamiento);
+            this.Gpb_Listado.Controls.Add(this.Txt_Consulta);
+            this.Gpb_Listado.Controls.Add(this.Lbl_Cadena_Generada);
+            this.Gpb_Listado.Controls.Add(this.Lbl_Query);
+            this.Gpb_Listado.Controls.Add(this.Btn_buscar);
+            this.Gpb_Listado.Controls.Add(this.Cbo_Query);
+            this.Gpb_Listado.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_Listado.Location = new System.Drawing.Point(0, 32);
+            this.Gpb_Listado.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_Listado.Name = "Gpb_Listado";
+            this.Gpb_Listado.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_Listado.Size = new System.Drawing.Size(1071, 142);
+            this.Gpb_Listado.TabIndex = 5;
+            this.Gpb_Listado.TabStop = false;
+            this.Gpb_Listado.Text = "Consultas Simples";
             // 
-            // txt_Consulta
+            // Gpb_Ordenamiento
             // 
-            this.txt_Consulta.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txt_Consulta.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Consulta.Location = new System.Drawing.Point(250, 66);
-            this.txt_Consulta.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_Consulta.Name = "txt_Consulta";
-            this.txt_Consulta.ReadOnly = true;
-            this.txt_Consulta.Size = new System.Drawing.Size(330, 23);
-            this.txt_Consulta.TabIndex = 8;
+            this.Gpb_Ordenamiento.Controls.Add(this.Rdb_ASC);
+            this.Gpb_Ordenamiento.Controls.Add(this.Rdb_Opcion1);
+            this.Gpb_Ordenamiento.Font = new System.Drawing.Font("Rockwell", 11F);
+            this.Gpb_Ordenamiento.Location = new System.Drawing.Point(603, 43);
+            this.Gpb_Ordenamiento.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_Ordenamiento.Name = "Gpb_Ordenamiento";
+            this.Gpb_Ordenamiento.Padding = new System.Windows.Forms.Padding(4);
+            this.Gpb_Ordenamiento.Size = new System.Drawing.Size(232, 91);
+            this.Gpb_Ordenamiento.TabIndex = 26;
+            this.Gpb_Ordenamiento.TabStop = false;
+            this.Gpb_Ordenamiento.Text = "Ordenamiento";
             // 
-            // lbl_Cadena_Generada
+            // Rdb_ASC
             // 
-            this.lbl_Cadena_Generada.AutoSize = true;
-            this.lbl_Cadena_Generada.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Cadena_Generada.Location = new System.Drawing.Point(248, 45);
-            this.lbl_Cadena_Generada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Cadena_Generada.Name = "lbl_Cadena_Generada";
-            this.lbl_Cadena_Generada.Size = new System.Drawing.Size(136, 17);
-            this.lbl_Cadena_Generada.TabIndex = 7;
-            this.lbl_Cadena_Generada.Text = "Cadena Generada";
+            this.Rdb_ASC.AutoSize = true;
+            this.Rdb_ASC.Font = new System.Drawing.Font("Rockwell", 11F);
+            this.Rdb_ASC.Location = new System.Drawing.Point(27, 48);
+            this.Rdb_ASC.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_ASC.Name = "Rdb_ASC";
+            this.Rdb_ASC.Size = new System.Drawing.Size(68, 25);
+            this.Rdb_ASC.TabIndex = 10;
+            this.Rdb_ASC.TabStop = true;
+            this.Rdb_ASC.Text = "ASC";
+            this.Rdb_ASC.UseVisualStyleBackColor = true;
             // 
-            // lbl_Query
+            // Rdb_Opcion1
             // 
-            this.lbl_Query.AutoSize = true;
-            this.lbl_Query.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Query.Location = new System.Drawing.Point(37, 45);
-            this.lbl_Query.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Query.Name = "lbl_Query";
-            this.lbl_Query.Size = new System.Drawing.Size(52, 17);
-            this.lbl_Query.TabIndex = 6;
-            this.lbl_Query.Text = "Query";
+            this.Rdb_Opcion1.AutoSize = true;
+            this.Rdb_Opcion1.Font = new System.Drawing.Font("Rockwell", 11F);
+            this.Rdb_Opcion1.Location = new System.Drawing.Point(125, 48);
+            this.Rdb_Opcion1.Margin = new System.Windows.Forms.Padding(4);
+            this.Rdb_Opcion1.Name = "Rdb_Opcion1";
+            this.Rdb_Opcion1.Size = new System.Drawing.Size(81, 25);
+            this.Rdb_Opcion1.TabIndex = 26;
+            this.Rdb_Opcion1.TabStop = true;
+            this.Rdb_Opcion1.Text = "DESC";
+            this.Rdb_Opcion1.UseVisualStyleBackColor = true;
             // 
-            // btnQuitarCampo
+            // Txt_Consulta
             // 
-            this.btnQuitarCampo.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitarCampo.Image = global::Capa_Vista_Componente_Consultas.Properties.Resources.android_search_icon_icons_com_50501;
-            this.btnQuitarCampo.Location = new System.Drawing.Point(628, 36);
-            this.btnQuitarCampo.Name = "btnQuitarCampo";
-            this.btnQuitarCampo.Size = new System.Drawing.Size(70, 60);
-            this.btnQuitarCampo.TabIndex = 5;
-            this.btnQuitarCampo.Text = "Buscar";
-            this.btnQuitarCampo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnQuitarCampo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnQuitarCampo.UseCompatibleTextRendering = true;
-            this.btnQuitarCampo.UseVisualStyleBackColor = true;
+            this.Txt_Consulta.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Txt_Consulta.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.Txt_Consulta.Location = new System.Drawing.Point(224, 90);
+            this.Txt_Consulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Txt_Consulta.Name = "Txt_Consulta";
+            this.Txt_Consulta.ReadOnly = true;
+            this.Txt_Consulta.Size = new System.Drawing.Size(371, 27);
+            this.Txt_Consulta.TabIndex = 8;
             // 
-            // cbo_Query
+            // Lbl_Cadena_Generada
             // 
-            this.cbo_Query.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_Query.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_Query.FormattingEnabled = true;
-            this.cbo_Query.Location = new System.Drawing.Point(40, 65);
-            this.cbo_Query.Name = "cbo_Query";
-            this.cbo_Query.Size = new System.Drawing.Size(158, 25);
-            this.cbo_Query.TabIndex = 0;
+            this.Lbl_Cadena_Generada.AutoSize = true;
+            this.Lbl_Cadena_Generada.Font = new System.Drawing.Font("Rockwell", 11F);
+            this.Lbl_Cadena_Generada.Location = new System.Drawing.Point(220, 49);
+            this.Lbl_Cadena_Generada.Name = "Lbl_Cadena_Generada";
+            this.Lbl_Cadena_Generada.Size = new System.Drawing.Size(204, 21);
+            this.Lbl_Cadena_Generada.TabIndex = 7;
+            this.Lbl_Cadena_Generada.Text = "Nombre de empleado";
             // 
-            // dataGridView1
+            // Lbl_Query
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 147);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(671, 315);
-            this.dataGridView1.TabIndex = 6;
+            this.Lbl_Query.AutoSize = true;
+            this.Lbl_Query.Font = new System.Drawing.Font("Rockwell", 11F);
+            this.Lbl_Query.Location = new System.Drawing.Point(15, 49);
+            this.Lbl_Query.Name = "Lbl_Query";
+            this.Lbl_Query.Size = new System.Drawing.Size(185, 21);
+            this.Lbl_Query.TabIndex = 6;
+            this.Lbl_Query.Text = "Nombre de la tabla ";
+            // 
+            // Btn_buscar
+            // 
+            this.Btn_buscar.Font = new System.Drawing.Font("Rockwell", 11F);
+            this.Btn_buscar.Image = global::Capa_Vista_Componente_Consultas.Properties.Resources.android_search_icon_icons_com_50501;
+            this.Btn_buscar.Location = new System.Drawing.Point(843, 45);
+            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_buscar.Name = "Btn_buscar";
+            this.Btn_buscar.Size = new System.Drawing.Size(95, 75);
+            this.Btn_buscar.TabIndex = 5;
+            this.Btn_buscar.Text = "Buscar";
+            this.Btn_buscar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.Btn_buscar.UseCompatibleTextRendering = true;
+            this.Btn_buscar.UseVisualStyleBackColor = true;
+            // 
+            // Cbo_Query
+            // 
+            this.Cbo_Query.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbo_Query.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.Cbo_Query.FormattingEnabled = true;
+            this.Cbo_Query.Location = new System.Drawing.Point(16, 87);
+            this.Cbo_Query.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_Query.Name = "Cbo_Query";
+            this.Cbo_Query.Size = new System.Drawing.Size(188, 28);
+            this.Cbo_Query.TabIndex = 0;
+            // 
+            // Dgv_Consultas_Simples
+            // 
+            this.Dgv_Consultas_Simples.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Consultas_Simples.Location = new System.Drawing.Point(16, 182);
+            this.Dgv_Consultas_Simples.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Dgv_Consultas_Simples.Name = "Dgv_Consultas_Simples";
+            this.Dgv_Consultas_Simples.RowHeadersWidth = 51;
+            this.Dgv_Consultas_Simples.RowTemplate.Height = 24;
+            this.Dgv_Consultas_Simples.Size = new System.Drawing.Size(1008, 388);
+            this.Dgv_Consultas_Simples.TabIndex = 6;
             // 
             // Mstp_Consultas
             // 
             this.Mstp_Consultas.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.Mstp_Consultas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.creaciònToolStripMenuItem,
-            this.consultasToolStripMenuItem,
-            this.editarToolStripMenuItem});
             this.Mstp_Consultas.Location = new System.Drawing.Point(0, 0);
             this.Mstp_Consultas.Name = "Mstp_Consultas";
-            this.Mstp_Consultas.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.Mstp_Consultas.Size = new System.Drawing.Size(757, 25);
+            this.Mstp_Consultas.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.Mstp_Consultas.Size = new System.Drawing.Size(1077, 24);
             this.Mstp_Consultas.TabIndex = 9;
             this.Mstp_Consultas.Text = "menuStrip1";
             // 
-            // creaciònToolStripMenuItem
+            // Btn_Min
             // 
-            this.creaciònToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creaciònToolStripMenuItem.Name = "creaciònToolStripMenuItem";
-            this.creaciònToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
-            this.creaciònToolStripMenuItem.Text = "Creación";
-            this.creaciònToolStripMenuItem.Click += new System.EventHandler(this.creaciònToolStripMenuItem_Click);
+            this.Btn_Min.Location = new System.Drawing.Point(976, 1);
+            this.Btn_Min.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Min.Name = "Btn_Min";
+            this.Btn_Min.Size = new System.Drawing.Size(85, 28);
+            this.Btn_Min.TabIndex = 14;
+            this.Btn_Min.Text = "Minimizar";
+            this.Btn_Min.UseVisualStyleBackColor = true;
+            this.Btn_Min.Click += new System.EventHandler(this.btn_min_Click);
             // 
-            // consultasToolStripMenuItem
+            // Btn_Boton1
             // 
-            this.consultasToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(82, 21);
-            this.consultasToolStripMenuItem.Text = "Consultas";
+            this.Btn_Boton1.Location = new System.Drawing.Point(781, 2);
+            this.Btn_Boton1.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Boton1.Name = "Btn_Boton1";
+            this.Btn_Boton1.Size = new System.Drawing.Size(95, 28);
+            this.Btn_Boton1.TabIndex = 15;
+            this.Btn_Boton1.Text = "Regresar";
+            this.Btn_Boton1.UseVisualStyleBackColor = true;
+            this.Btn_Boton1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // editarToolStripMenuItem
+            // Btn_Boton2
             // 
-            this.editarToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(119, 21);
-            this.editarToolStripMenuItem.Text = "Editar/Eliminar";
+            this.Btn_Boton2.Location = new System.Drawing.Point(588, 2);
+            this.Btn_Boton2.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Boton2.Name = "Btn_Boton2";
+            this.Btn_Boton2.Size = new System.Drawing.Size(147, 30);
+            this.Btn_Boton2.TabIndex = 16;
+            this.Btn_Boton2.Text = "Consulta Compleja";
+            this.Btn_Boton2.UseVisualStyleBackColor = true;
             // 
-            // btn_cerrar
+            // Btn_Max
             // 
-            this.btn_cerrar.Location = new System.Drawing.Point(555, 0);
-            this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(50, 23);
-            this.btn_cerrar.TabIndex = 13;
-            this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.UseVisualStyleBackColor = true;
-            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
-            // 
-            // btn_min
-            // 
-            this.btn_min.Location = new System.Drawing.Point(611, 0);
-            this.btn_min.Name = "btn_min";
-            this.btn_min.Size = new System.Drawing.Size(64, 23);
-            this.btn_min.TabIndex = 14;
-            this.btn_min.Text = "Minimizar";
-            this.btn_min.UseVisualStyleBackColor = true;
-            // 
-            // btn_max
-            // 
-            this.btn_max.Location = new System.Drawing.Point(681, 0);
-            this.btn_max.Name = "btn_max";
-            this.btn_max.Size = new System.Drawing.Size(63, 23);
-            this.btn_max.TabIndex = 15;
-            this.btn_max.Text = "Maximizar";
-            this.btn_max.UseVisualStyleBackColor = true;
+            this.Btn_Max.Location = new System.Drawing.Point(884, 2);
+            this.Btn_Max.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Max.Name = "Btn_Max";
+            this.Btn_Max.Size = new System.Drawing.Size(84, 28);
+            this.Btn_Max.TabIndex = 25;
+            this.Btn_Max.Text = "Maximizar";
+            this.Btn_Max.UseVisualStyleBackColor = true;
+            this.Btn_Max.Click += new System.EventHandler(this.btn_max_Click);
             // 
             // Frm_Consultas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 472);
-            this.Controls.Add(this.btn_max);
-            this.Controls.Add(this.btn_min);
-            this.Controls.Add(this.btn_cerrar);
+            this.ClientSize = new System.Drawing.Size(1077, 581);
+            this.ControlBox = false;
+            this.Controls.Add(this.Gpb_Listado);
+            this.Controls.Add(this.Btn_Max);
+            this.Controls.Add(this.Btn_Boton2);
+            this.Controls.Add(this.Btn_Boton1);
+            this.Controls.Add(this.Btn_Min);
             this.Controls.Add(this.Mstp_Consultas);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.gpb_Listado);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.Dgv_Consultas_Simples);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Frm_Consultas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Consultas";
-            this.Load += new System.EventHandler(this.Frm_Consultas_Load);
-            this.gpb_Listado.ResumeLayout(false);
-            this.gpb_Listado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.Mstp_Consultas.ResumeLayout(false);
-            this.Mstp_Consultas.PerformLayout();
+            this.Gpb_Listado.ResumeLayout(false);
+            this.Gpb_Listado.PerformLayout();
+            this.Gpb_Ordenamiento.ResumeLayout(false);
+            this.Gpb_Ordenamiento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Consultas_Simples)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,19 +259,20 @@ namespace Capa_Vista_Componente_Consultas
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gpb_Listado;
-        private System.Windows.Forms.Button btnQuitarCampo;
-        private System.Windows.Forms.ComboBox cbo_Query;
-        private System.Windows.Forms.TextBox txt_Consulta;
-        private System.Windows.Forms.Label lbl_Cadena_Generada;
-        private System.Windows.Forms.Label lbl_Query;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox Gpb_Listado;
+        private System.Windows.Forms.Button Btn_buscar;
+        private System.Windows.Forms.ComboBox Cbo_Query;
+        private System.Windows.Forms.TextBox Txt_Consulta;
+        private System.Windows.Forms.Label Lbl_Cadena_Generada;
+        private System.Windows.Forms.Label Lbl_Query;
+        private System.Windows.Forms.DataGridView Dgv_Consultas_Simples;
         private System.Windows.Forms.MenuStrip Mstp_Consultas;
-        private System.Windows.Forms.ToolStripMenuItem creaciònToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
-        private System.Windows.Forms.Button btn_cerrar;
-        private System.Windows.Forms.Button btn_min;
-        private System.Windows.Forms.Button btn_max;
+        private System.Windows.Forms.Button Btn_Min;
+        private System.Windows.Forms.Button Btn_Boton1;
+        private System.Windows.Forms.Button Btn_Boton2;
+        private System.Windows.Forms.Button Btn_Max;
+        private System.Windows.Forms.RadioButton Rdb_ASC;
+        private System.Windows.Forms.RadioButton Rdb_Opcion1;
+        private System.Windows.Forms.GroupBox Gpb_Ordenamiento;
     }
 }

@@ -11,7 +11,7 @@ namespace Prototipo_Consultas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Creacion());
+            Application.Run(new Frm_Principal());
         }
     }
 }
