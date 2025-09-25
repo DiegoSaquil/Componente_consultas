@@ -252,7 +252,8 @@ namespace Capa_Vista_Componente_Consultas
             }
         }
 
-  //----------------------------------------------------------------------------------------------------------      
+  //----------------------------------------------------------------------------------------------------------
+  //Diego André Monterroso Rabarique 0901-22-1369 23/09/2025
         private static string PreferColOrden(List<(string Col, string DataType)> colsTipos)
         {
             var pref = colsTipos.FirstOrDefault(ct => ct.Col.Equals("nombre_completo", StringComparison.OrdinalIgnoreCase));
@@ -297,7 +298,7 @@ namespace Capa_Vista_Componente_Consultas
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        // ------------------------------------------------------------------------------------------------------
         // Carlo Andree Barquero Boche 0901-22-601 23/09/2025
 
         private bool BuscarPorNombreMostrarTodo(string nombre)
