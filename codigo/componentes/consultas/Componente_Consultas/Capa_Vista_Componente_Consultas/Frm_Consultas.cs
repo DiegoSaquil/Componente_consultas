@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 namespace Capa_Vista_Componente_Consultas
-
-// Realizado por: Samuel 
 {
+    // Samuel Estuardo Gómez Lec 0901-21-10616 fecha 23-09-2025
     public partial class Frm_Consultas : Form
     {
         private const string DSN = "Prueba1";
@@ -73,11 +72,8 @@ namespace Capa_Vista_Componente_Consultas
             Txt_Consulta.BackColor = SystemColors.Window;
             Txt_Consulta.ForeColor = SystemColors.WindowText;
         }
-
-        // ---------------------------------------------------------------
-
-
-        // Realizado por: Pablo 
+        //--------------------------------------------------
+        
         private static List<(string Col, string DataType)> GetColsTipos(OdbcConnection cn, string tabla)
         {
             using (var cmd = cn.CreateCommand())
@@ -112,10 +108,8 @@ namespace Capa_Vista_Componente_Consultas
                 return r == null ? null : r.ToString();
             }
         }
-        // -----------------------------------------------------------------------------------------
 
-
-        // Realizado por: Richard
+      
         private static string FindEmpleadoTable(OdbcConnection cn)
         {
             using (var cmd = cn.CreateCommand())
@@ -159,9 +153,8 @@ namespace Capa_Vista_Componente_Consultas
 
             return string.Join(", ", piezas);
         }
-     
 
-       
+  
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
             if (Cbo_Query.SelectedValue == null)
@@ -244,9 +237,8 @@ namespace Capa_Vista_Componente_Consultas
                     "Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // -------------------------------------------------------------------------------
 
-        // Realizado por: Diego Monterroso
+        
         private static string PreferColOrden(List<(string Col, string DataType)> colsTipos)
         {
             var pref = colsTipos.FirstOrDefault(ct => ct.Col.Equals("nombre_completo", StringComparison.OrdinalIgnoreCase));
@@ -291,9 +283,7 @@ namespace Capa_Vista_Componente_Consultas
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        // ------------------------------------------------------------------------------------------
 
-        // Realizado por: Carlo 
         private bool BuscarPorNombreMostrarTodo(string nombre)
         {
             try
@@ -414,7 +404,7 @@ namespace Capa_Vista_Componente_Consultas
             }
         }
 
-        // Realizado por: Pablo 
+        
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.Owner != null) this.Owner.Show();
@@ -429,6 +419,11 @@ namespace Capa_Vista_Componente_Consultas
         private void btn_min_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Gpb_Listado_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

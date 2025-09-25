@@ -57,38 +57,38 @@ namespace Capa_Vista_Componente_Consultas
             // 
             this.Cbo_busqueda.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_busqueda.FormattingEnabled = true;
-            this.Cbo_busqueda.Location = new System.Drawing.Point(288, 33);
+            this.Cbo_busqueda.Location = new System.Drawing.Point(324, 41);
             this.Cbo_busqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Cbo_busqueda.Name = "Cbo_busqueda";
-            this.Cbo_busqueda.Size = new System.Drawing.Size(299, 27);
+            this.Cbo_busqueda.Size = new System.Drawing.Size(336, 30);
             this.Cbo_busqueda.TabIndex = 0;
             // 
             // Lbl_Label1
             // 
             this.Lbl_Label1.AutoSize = true;
-            this.Lbl_Label1.Location = new System.Drawing.Point(397, 98);
+            this.Lbl_Label1.Location = new System.Drawing.Point(447, 122);
             this.Lbl_Label1.Name = "Lbl_Label1";
-            this.Lbl_Label1.Size = new System.Drawing.Size(0, 17);
+            this.Lbl_Label1.Size = new System.Drawing.Size(0, 20);
             this.Lbl_Label1.TabIndex = 1;
             // 
             // Dgv_Tabla
             // 
             this.Dgv_Tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Tabla.Location = new System.Drawing.Point(27, 94);
+            this.Dgv_Tabla.Location = new System.Drawing.Point(30, 118);
             this.Dgv_Tabla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dgv_Tabla.Name = "Dgv_Tabla";
             this.Dgv_Tabla.RowHeadersWidth = 51;
             this.Dgv_Tabla.RowTemplate.Height = 24;
-            this.Dgv_Tabla.Size = new System.Drawing.Size(988, 274);
+            this.Dgv_Tabla.Size = new System.Drawing.Size(1112, 342);
             this.Dgv_Tabla.TabIndex = 7;
             // 
             // Btn_editar
             // 
             this.Btn_editar.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_editar.Location = new System.Drawing.Point(1101, 415);
+            this.Btn_editar.Location = new System.Drawing.Point(1239, 519);
             this.Btn_editar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_editar.Name = "Btn_editar";
-            this.Btn_editar.Size = new System.Drawing.Size(89, 32);
+            this.Btn_editar.Size = new System.Drawing.Size(100, 40);
             this.Btn_editar.TabIndex = 8;
             this.Btn_editar.Text = "Editar";
             this.Btn_editar.UseVisualStyleBackColor = true;
@@ -97,10 +97,10 @@ namespace Capa_Vista_Componente_Consultas
             // Btn_eliminar
             // 
             this.Btn_eliminar.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_eliminar.Location = new System.Drawing.Point(1229, 417);
+            this.Btn_eliminar.Location = new System.Drawing.Point(1383, 521);
             this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_eliminar.Name = "Btn_eliminar";
-            this.Btn_eliminar.Size = new System.Drawing.Size(105, 30);
+            this.Btn_eliminar.Size = new System.Drawing.Size(118, 38);
             this.Btn_eliminar.TabIndex = 9;
             this.Btn_eliminar.Text = "Eliminar";
             this.Btn_eliminar.UseVisualStyleBackColor = true;
@@ -109,10 +109,10 @@ namespace Capa_Vista_Componente_Consultas
             // Btn_EjecutarSQL
             // 
             this.Btn_EjecutarSQL.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_EjecutarSQL.Location = new System.Drawing.Point(938, 423);
+            this.Btn_EjecutarSQL.Location = new System.Drawing.Point(1055, 529);
             this.Btn_EjecutarSQL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_EjecutarSQL.Name = "Btn_EjecutarSQL";
-            this.Btn_EjecutarSQL.Size = new System.Drawing.Size(148, 70);
+            this.Btn_EjecutarSQL.Size = new System.Drawing.Size(166, 88);
             this.Btn_EjecutarSQL.TabIndex = 10;
             this.Btn_EjecutarSQL.Text = "Ejecutar SQL";
             this.Btn_EjecutarSQL.UseVisualStyleBackColor = true;
@@ -122,10 +122,10 @@ namespace Capa_Vista_Componente_Consultas
             // 
             this.Rdb_asc.AutoSize = true;
             this.Rdb_asc.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rdb_asc.Location = new System.Drawing.Point(23, 32);
+            this.Rdb_asc.Location = new System.Drawing.Point(26, 40);
             this.Rdb_asc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Rdb_asc.Name = "Rdb_asc";
-            this.Rdb_asc.Size = new System.Drawing.Size(68, 25);
+            this.Rdb_asc.Size = new System.Drawing.Size(82, 30);
             this.Rdb_asc.TabIndex = 11;
             this.Rdb_asc.TabStop = true;
             this.Rdb_asc.Text = "ASC";
@@ -135,10 +135,10 @@ namespace Capa_Vista_Componente_Consultas
             // 
             this.Rdb_desc.AutoSize = true;
             this.Rdb_desc.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rdb_desc.Location = new System.Drawing.Point(132, 33);
+            this.Rdb_desc.Location = new System.Drawing.Point(148, 41);
             this.Rdb_desc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Rdb_desc.Name = "Rdb_desc";
-            this.Rdb_desc.Size = new System.Drawing.Size(81, 25);
+            this.Rdb_desc.Size = new System.Drawing.Size(97, 30);
             this.Rdb_desc.TabIndex = 12;
             this.Rdb_desc.TabStop = true;
             this.Rdb_desc.Text = "DESC";
@@ -147,10 +147,10 @@ namespace Capa_Vista_Componente_Consultas
             // Btn_regresar
             // 
             this.Btn_regresar.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_regresar.Location = new System.Drawing.Point(991, 7);
+            this.Btn_regresar.Location = new System.Drawing.Point(1115, 9);
             this.Btn_regresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_regresar.Name = "Btn_regresar";
-            this.Btn_regresar.Size = new System.Drawing.Size(104, 31);
+            this.Btn_regresar.Size = new System.Drawing.Size(117, 39);
             this.Btn_regresar.TabIndex = 14;
             this.Btn_regresar.Text = "Regresar";
             this.Btn_regresar.UseVisualStyleBackColor = true;
@@ -159,10 +159,10 @@ namespace Capa_Vista_Componente_Consultas
             // Btn_consimple
             // 
             this.Btn_consimple.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_consimple.Location = new System.Drawing.Point(1100, 42);
+            this.Btn_consimple.Location = new System.Drawing.Point(1238, 52);
             this.Btn_consimple.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_consimple.Name = "Btn_consimple";
-            this.Btn_consimple.Size = new System.Drawing.Size(133, 28);
+            this.Btn_consimple.Size = new System.Drawing.Size(150, 35);
             this.Btn_consimple.TabIndex = 15;
             this.Btn_consimple.Text = "Consulta Simple";
             this.Btn_consimple.UseVisualStyleBackColor = true;
@@ -172,23 +172,24 @@ namespace Capa_Vista_Componente_Consultas
             // 
             this.Lbl_Tabla.AutoSize = true;
             this.Lbl_Tabla.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Tabla.Location = new System.Drawing.Point(13, 30);
+            this.Lbl_Tabla.Location = new System.Drawing.Point(15, 38);
             this.Lbl_Tabla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Tabla.Name = "Lbl_Tabla";
-            this.Lbl_Tabla.Size = new System.Drawing.Size(250, 35);
+            this.Lbl_Tabla.Size = new System.Drawing.Size(300, 41);
             this.Lbl_Tabla.TabIndex = 17;
             this.Lbl_Tabla.Text = "Nombre de tabla";
+            this.Lbl_Tabla.Click += new System.EventHandler(this.Lbl_Tabla_Click);
             // 
             // Lst_Querys
             // 
             this.Lst_Querys.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Lst_Querys.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lst_Querys.FormattingEnabled = true;
-            this.Lst_Querys.ItemHeight = 19;
-            this.Lst_Querys.Location = new System.Drawing.Point(1119, 94);
-            this.Lst_Querys.Margin = new System.Windows.Forms.Padding(4);
+            this.Lst_Querys.ItemHeight = 22;
+            this.Lst_Querys.Location = new System.Drawing.Point(1259, 118);
+            this.Lst_Querys.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Lst_Querys.Name = "Lst_Querys";
-            this.Lst_Querys.Size = new System.Drawing.Size(292, 289);
+            this.Lst_Querys.Size = new System.Drawing.Size(328, 356);
             this.Lst_Querys.TabIndex = 18;
             // 
             // Gpb_Orden
@@ -196,11 +197,11 @@ namespace Capa_Vista_Componente_Consultas
             this.Gpb_Orden.Controls.Add(this.Rdb_asc);
             this.Gpb_Orden.Controls.Add(this.Rdb_desc);
             this.Gpb_Orden.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Orden.Location = new System.Drawing.Point(731, 15);
-            this.Gpb_Orden.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_Orden.Location = new System.Drawing.Point(822, 19);
+            this.Gpb_Orden.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Gpb_Orden.Name = "Gpb_Orden";
-            this.Gpb_Orden.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_Orden.Size = new System.Drawing.Size(212, 71);
+            this.Gpb_Orden.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Gpb_Orden.Size = new System.Drawing.Size(238, 89);
             this.Gpb_Orden.TabIndex = 19;
             this.Gpb_Orden.TabStop = false;
             this.Gpb_Orden.Text = "Orden";
@@ -209,10 +210,10 @@ namespace Capa_Vista_Componente_Consultas
             // 
             this.Lbl_Sql.AutoSize = true;
             this.Lbl_Sql.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Sql.Location = new System.Drawing.Point(20, 377);
+            this.Lbl_Sql.Location = new System.Drawing.Point(22, 471);
             this.Lbl_Sql.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Sql.Name = "Lbl_Sql";
-            this.Lbl_Sql.Size = new System.Drawing.Size(245, 35);
+            this.Lbl_Sql.Size = new System.Drawing.Size(294, 41);
             this.Lbl_Sql.TabIndex = 20;
             this.Lbl_Sql.Text = "Consola de SQL:";
             // 
@@ -220,12 +221,12 @@ namespace Capa_Vista_Componente_Consultas
             // 
             this.Txt_Sql.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txt_Sql.Location = new System.Drawing.Point(13, 423);
-            this.Txt_Sql.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_Sql.Location = new System.Drawing.Point(15, 529);
+            this.Txt_Sql.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Txt_Sql.Multiline = true;
             this.Txt_Sql.Name = "Txt_Sql";
             this.Txt_Sql.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Txt_Sql.Size = new System.Drawing.Size(917, 155);
+            this.Txt_Sql.Size = new System.Drawing.Size(1031, 193);
             this.Txt_Sql.TabIndex = 21;
             // 
             // Dgv_Sql
@@ -234,21 +235,21 @@ namespace Capa_Vista_Componente_Consultas
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_Sql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Sql.Location = new System.Drawing.Point(13, 586);
-            this.Dgv_Sql.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_Sql.Location = new System.Drawing.Point(15, 732);
+            this.Dgv_Sql.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Dgv_Sql.Name = "Dgv_Sql";
             this.Dgv_Sql.RowHeadersWidth = 51;
-            this.Dgv_Sql.Size = new System.Drawing.Size(917, 294);
+            this.Dgv_Sql.Size = new System.Drawing.Size(1032, 368);
             this.Dgv_Sql.TabIndex = 22;
             // 
             // Btn_buscar
             // 
             this.Btn_buscar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_buscar.Image = global::Capa_Vista_Componente_Consultas.Properties.Resources.android_search_icon_icons_com_50501;
-            this.Btn_buscar.Location = new System.Drawing.Point(613, 10);
-            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_buscar.Location = new System.Drawing.Point(690, 12);
+            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_buscar.Name = "Btn_buscar";
-            this.Btn_buscar.Size = new System.Drawing.Size(89, 78);
+            this.Btn_buscar.Size = new System.Drawing.Size(100, 98);
             this.Btn_buscar.TabIndex = 6;
             this.Btn_buscar.Text = "Buscar";
             this.Btn_buscar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -260,10 +261,10 @@ namespace Capa_Vista_Componente_Consultas
             // Btn_min
             // 
             this.Btn_min.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_min.Location = new System.Drawing.Point(1236, 7);
-            this.Btn_min.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_min.Location = new System.Drawing.Point(1390, 9);
+            this.Btn_min.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_min.Name = "Btn_min";
-            this.Btn_min.Size = new System.Drawing.Size(112, 30);
+            this.Btn_min.Size = new System.Drawing.Size(126, 38);
             this.Btn_min.TabIndex = 23;
             this.Btn_min.Text = "Minimizar";
             this.Btn_min.UseVisualStyleBackColor = true;
@@ -272,10 +273,10 @@ namespace Capa_Vista_Componente_Consultas
             // Btn_max
             // 
             this.Btn_max.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_max.Location = new System.Drawing.Point(1101, 7);
-            this.Btn_max.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_max.Location = new System.Drawing.Point(1239, 9);
+            this.Btn_max.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Btn_max.Name = "Btn_max";
-            this.Btn_max.Size = new System.Drawing.Size(127, 28);
+            this.Btn_max.Size = new System.Drawing.Size(143, 35);
             this.Btn_max.TabIndex = 24;
             this.Btn_max.Text = "Maximizar";
             this.Btn_max.UseVisualStyleBackColor = true;
@@ -283,9 +284,9 @@ namespace Capa_Vista_Componente_Consultas
             // 
             // Frm_Consulta_Compleja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1442, 893);
+            this.ClientSize = new System.Drawing.Size(1622, 1050);
             this.ControlBox = false;
             this.Controls.Add(this.Btn_max);
             this.Controls.Add(this.Btn_min);
