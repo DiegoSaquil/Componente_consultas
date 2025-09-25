@@ -9,27 +9,35 @@ using System.Windows.Forms;
 namespace Capa_Vista_Componente_Consultas
 {
     // Samuel Estuardo Gómez Lec 0901-21-10616 fecha 23-09-2025
+
+    // clase que representa el formulario de consultas
     public partial class Frm_Consultas : Form
     {
+        // constantes para la configuracion de la conexion de la BD
         private const string DSN = "Prueba1";
         private const string DB = "controlempleados";
 
+        // variables para almacenar el estado de la ultima consulta
         private string _ultimaTabla = null;
         private List<string> _ultimasColumnas = null;
         private string _ultimaColumnaOrden = null;
 
+        //constructor del formulario
         public Frm_Consultas()
         {
+            //configura el formulario sin bordes ni barra de titulo
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.ControlBox = false;
 
-            this.Load += Frm_Consultas_Load;
-            Btn_buscar.Click += Btn_buscar_Click;
-            Rdb_ASC.CheckedChanged += Orden_CheckedChanged;
-            Rdb_Opcion1.CheckedChanged += Orden_CheckedChanged;
+            //asocia los manejadores de eventos
+            this.Load += Frm_Consultas_Load;  // ejecuta cargar el formulario
+            Btn_buscar.Click += Btn_buscar_Click; // boton de busqueda
+            Rdb_ASC.CheckedChanged += Orden_CheckedChanged; // cambio en radio button ASC
+            Rdb_Opcion1.CheckedChanged += Orden_CheckedChanged; // cambio para ratio button opcion1
         }
 
+        //metodo que crea y retorna una nueva conexion ODBC
         private OdbcConnection GetConn()
         {
             return new OdbcConnection($"Dsn={DSN};Database={DB}");
@@ -40,19 +48,24 @@ namespace Capa_Vista_Componente_Consultas
         {
             try
             {
+                //establece la conexion a la base de datos y ejecuta la consulta
                 using (var cn = GetConn())
                 using (var cmd = cn.CreateCommand())
                 {
-                    cn.Open();
+                    cn.Open(); // abre la conexion 
+
+                    // consulta para obtener los nombres de las tablas 
                     cmd.CommandText = @"SELECT table_name
                                         FROM information_schema.tables
                                         WHERE table_schema = ?
                                         ORDER BY table_name";
                     cmd.Parameters.Add("schema", OdbcType.VarChar).Value = DB;
 
+                    // crea una tabla de datos para almacenar resultados 
                     var dt = new DataTable();
                     using (var da = new OdbcDataAdapter(cmd)) { da.Fill(dt); }
 
+                    // configura el combobox para mostrar las tablas
                     Cbo_Query.DropDownStyle = ComboBoxStyle.DropDownList;
                     Cbo_Query.DisplayMember = "table_name";
                     Cbo_Query.ValueMember = "table_name";
@@ -61,11 +74,12 @@ namespace Capa_Vista_Componente_Consultas
             }
             catch (Exception ex)
             {
+                // muestra mensaje de error
                 MessageBox.Show("No se pudieron cargar las tablas.\n" + ex.Message, "ODBC",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-           
+            // configura las propiedades del control textbox de la consulta
             Txt_Consulta.ReadOnly = false;
             Txt_Consulta.Enabled = true;
             Txt_Consulta.TabStop = true;
