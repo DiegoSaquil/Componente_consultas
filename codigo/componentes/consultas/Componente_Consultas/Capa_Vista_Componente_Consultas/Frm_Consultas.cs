@@ -87,7 +87,7 @@ namespace Capa_Vista_Componente_Consultas
             Txt_Consulta.ForeColor = SystemColors.WindowText;
         }
         //--------------------------------------------------
-
+        // Jose Pablo Medina Gonzalez 0901-22-2592 23/09/2025 
         private static List<(string Col, string DataType)> GetColsTipos(OdbcConnection cn, string tabla)
         {
             using (var cmd = cn.CreateCommand())
@@ -122,6 +122,7 @@ namespace Capa_Vista_Componente_Consultas
                 return r == null ? null : r.ToString();
             }
         }
+        // --------------------------------------------------------------------------
 
     // Richard Anthony De León Milian 0901-22-10245    23/09/2025
         private static string FindEmpleadoTable(OdbcConnection cn)
