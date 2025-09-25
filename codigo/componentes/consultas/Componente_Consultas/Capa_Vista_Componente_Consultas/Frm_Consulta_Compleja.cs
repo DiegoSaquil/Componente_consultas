@@ -152,7 +152,7 @@ namespace Capa_Vista_Componente_Consultas
 
         // ----------------------------------------------------------------------------------------- //
 
-        // Realizado por:
+        // Realizado por: Nelson Jose Godínez Méndez 0901-22-3550 22/09/2025
         private void Lst_Querys_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_uiBusy) return;
