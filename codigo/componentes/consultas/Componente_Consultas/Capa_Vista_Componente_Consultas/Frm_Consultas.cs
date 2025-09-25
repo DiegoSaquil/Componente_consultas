@@ -43,7 +43,7 @@ namespace Capa_Vista_Componente_Consultas
             return new OdbcConnection($"Dsn={DSN};Database={DB}");
         }
 
-        
+
         private void Frm_Consultas_Load(object sender, EventArgs e)
         {
             try
@@ -87,7 +87,7 @@ namespace Capa_Vista_Componente_Consultas
             Txt_Consulta.ForeColor = SystemColors.WindowText;
         }
         //--------------------------------------------------
-        
+
         private static List<(string Col, string DataType)> GetColsTipos(OdbcConnection cn, string tabla)
         {
             using (var cmd = cn.CreateCommand())
@@ -123,7 +123,7 @@ namespace Capa_Vista_Componente_Consultas
             }
         }
 
-      
+    // Richard Anthony De León Milian 0901-22-10245    23/09/2025
         private static string FindEmpleadoTable(OdbcConnection cn)
         {
             using (var cmd = cn.CreateCommand())
@@ -252,7 +252,7 @@ namespace Capa_Vista_Componente_Consultas
             }
         }
 
-        
+  //----------------------------------------------------------------------------------------------------------      
         private static string PreferColOrden(List<(string Col, string DataType)> colsTipos)
         {
             var pref = colsTipos.FirstOrDefault(ct => ct.Col.Equals("nombre_completo", StringComparison.OrdinalIgnoreCase));
