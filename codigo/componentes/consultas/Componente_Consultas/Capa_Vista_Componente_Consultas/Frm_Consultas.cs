@@ -298,6 +298,8 @@ namespace Capa_Vista_Componente_Consultas
             }
         }
 
+        // Carlo Andree Barquero Boche 0901-22-601 23/09/2025
+
         private bool BuscarPorNombreMostrarTodo(string nombre)
         {
             try
@@ -418,6 +420,7 @@ namespace Capa_Vista_Componente_Consultas
             }
         }
 
+        // -------------------------------------------------------------------------------------------
         
         private void button1_Click(object sender, EventArgs e)
         {
