@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Capa_Modelo_Componente_Consultas
 {
-    // Nelson José Godinez Mendez 0901-22-3550 
+    // DIEGO
     public class ColumnaInfo
     {
         public string Nombre { get; set; }
@@ -77,7 +77,7 @@ namespace Capa_Modelo_Componente_Consultas
         }
         // ----------------------------------------------------------------------------------------- //
 
-        // Realizado por:
+        // Realizado por: RAUL
         public DataTable ConsultarTablaOrdenada(string tabla, bool asc, List<ColumnaInfo> columnas)
         {
             if (columnas == null || columnas.Count == 0) return new DataTable();

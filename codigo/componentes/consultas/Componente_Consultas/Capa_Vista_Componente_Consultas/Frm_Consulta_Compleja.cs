@@ -71,7 +71,7 @@ namespace Capa_Vista_Componente_Consultas
         // ----------------------------------------------------------------------------------------- //
 
         
-        // Realizado por:
+        // Realizado por: Juan Carlos Sandoval Quej 0901-22-4170 22/09/2025
         private void RefrescarTabla()
         {
             var tabla = Cbo_busqueda != null ? Cbo_busqueda.SelectedItem as string : null;
@@ -152,7 +152,7 @@ namespace Capa_Vista_Componente_Consultas
 
         // ----------------------------------------------------------------------------------------- //
 
-        // Realizado por:
+        // Realizado por: Nelson 
         private void Lst_Querys_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_uiBusy) return;
@@ -235,7 +235,7 @@ namespace Capa_Vista_Componente_Consultas
 
         // ----------------------------------------------------------------------------------------- //
 
-        // Realizado por:
+        // Realizado por:Raul
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
             if (_uiBusy) return;
