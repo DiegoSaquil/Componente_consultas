@@ -1,41 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Data.Odbc;
 
 namespace Capa_Modelo_Componente_Consultas
 {
-    class Conexion
+    // Juan Carlos Sandoval Quej 0901-22-4170
+    public sealed class Conexion : IDisposable
     {
-        public OdbcConnection conexion()
+        private readonly string _dsn;
+        private OdbcConnection _cn;
+        #region Propiedades (estandar público "p")
+        public string pDsn => _dsn;
+        public OdbcConnection pConexion => _cn;
+        #endregion
+
+
+        public Conexion() : this("Prueba1") { }
+        public Conexion(string dsn)
         {
-            //creacion de la conexion via ODBC
-            OdbcConnection con = new OdbcConnection("Dsn=Prueba1");
-            try
-            {
-                con.Open();
-            }
-            catch (OdbcException)
-            {
-                Console.WriteLine("No Conectó");
-            }
-            return con;
+            if (string.IsNullOrWhiteSpace(dsn))
+                throw new ArgumentException("Debes especificar el nombre del DSN.", nameof(dsn));
+            _dsn = dsn;
         }
 
-        //metodo para cerrar la conexion
+        public OdbcConnection Abrir()
+        {
+            if (_cn == null)
+            {
+                _cn = new OdbcConnection();
+                _cn.ConnectionString = $"Dsn={_dsn};"; // siempre inicializamos ConnectionString
+            }
+
+            if (_cn.State != ConnectionState.Open)
+                _cn.Open();
+
+            return _cn;
+        }
+
+        public void Dispose()
+        {
+            _cn?.Dispose();
+            _cn = null;
+        }
+
+        // API académica (por si la piden)
+        public OdbcConnection conexion() => Abrir();
         public void desconexion(OdbcConnection con)
         {
             try
             {
-                con.Close();
+                if (con != null && con.State != ConnectionState.Closed)
+                    con.Close();
             }
-            catch (OdbcException)
-            {
-                Console.WriteLine("No Conectó");
-            }
+            catch { /* opcional log */ }
         }
-
     }
 }
