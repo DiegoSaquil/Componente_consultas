@@ -8,13 +8,11 @@ using System.Text.RegularExpressions;
 using System.Linq;
 
 namespace Capa_Controlador_Consultas
+
+// Realizado por: Nelson 
 {
-    /// <summary>
-    /// Controlador para administrar consultas SQL de solo lectura (SELECT/SHOW/DESC/EXPLAIN/WITH),
-    /// persistirlas en XML y ejecutarlas de forma segura (ajustando TIME para el driver ODBC).
-    /// </summary>
     public class Controlador : IDisposable
-    {// linea 17 a 26 regiòn campos
+    {
         #region Campos (privados)
         private readonly string _dsn;
         private readonly string _db;
@@ -24,24 +22,10 @@ namespace Capa_Controlador_Consultas
 
         private readonly string _filePathXml;
         #endregion
-        //linea 28 a 43 regiòn propiedades publicas
         #region Propiedades públicas (estándar "p" + PascalCase)
-        /// <summary>DSN configurado (solo-lectura).</summary>
-        public string pDsn => _dsn;
-
-        /// <summary>Nombre de la base de datos (solo-lectura).</summary>
-        public string pDb => _db;
-
-        /// <summary>Ruta del XML de consultas persistidas.</summary>
-        public string pFilePathXml => _filePathXml;
-
-        /// <summary>Repositorio (acceso a datos).</summary>
-        public Sentencias pRepo => _repo;
-
-        /// <summary>Tabla en memoria con las consultas guardadas.</summary>
         public DataTable pQueries => Queries;
         #endregion
-        //linea 45 a 52 región propiedades internas
+       
         #region Propiedades internas/compatibilidad
         /// <summary>
         /// Tabla en memoria con las consultas guardadas (se mantiene por compatibilidad).
@@ -49,7 +33,6 @@ namespace Capa_Controlador_Consultas
         /// </summary>
         public DataTable Queries { get; private set; }
         #endregion
-        //línea 53 a 78 CTOR INICIALIZACIÓN
         #region Ctor / Inicialización
         public Controlador(string dsn, string databaseName)
         {
@@ -70,32 +53,26 @@ namespace Capa_Controlador_Consultas
             Queries = BuildTable();
             LoadQueries();
 
-            // Persistencia automática ante cambios
+            
             Queries.RowChanged += (s, e) => SaveQueries();
             Queries.RowDeleted += (s, e) => SaveQueries();
             Queries.TableNewRow += (s, e) => SaveQueries();
         }
         #endregion
-        //linea 80 a 93 consulta de esquemas y ayudas a UI
+        // ----------------------------------------------------------------------------------------
+
+        // Realizado por: Juan Carlos Sandoval Quej 0901-22-4170 22/09/2025
         #region Consultas de esquema / ayuda a UI
-        /// <summary>Devuelve la lista de tablas del esquema.</summary>
         public List<string> ObtenerNombresTablas() => _repo.ObtenerNombresTablas();
 
-        /// <summary>
-        /// Devuelve <c>SELECT</c> ordenado por la primera columna para una tabla dada,
-        /// usando el orden ASC/DESC.
-        /// </summary>
+
         public DataTable ConsultarTabla(string tabla, bool asc)
         {
             var cols = _repo.ObtenerColumnas(tabla);
             return _repo.ConsultarTablaOrdenada(tabla, asc, cols);
         }
         #endregion
-        //linea 99 a 127 validaciones
         #region Validación / Sugerencias
-        /// <summary>
-        /// Valida que el SQL sea de solo lectura (SELECT/SHOW/DESC/DESCRIBE/EXPLAIN/WITH).
-        /// </summary>
         public bool ValidarConsulta(string sql, out string razon)
         {
             razon = string.Empty;
@@ -116,7 +93,6 @@ namespace Capa_Controlador_Consultas
             return false;
         }
 
-        /// <summary>Genera un nombre corto sugerido para una consulta.</summary>
         public string SugerirNombre(string sql)
         {
             if (string.IsNullOrWhiteSpace(sql)) return "Consulta";
@@ -124,12 +100,13 @@ namespace Capa_Controlador_Consultas
             if (flat.Length > 40) flat = flat.Substring(0, 40) + "…";
             return "Consulta: " + flat;
         }
+
+        // ---------------------------------------------------------------------------------
+
         #endregion
-        //linea 129 a 180 de ejecución de consultas
         #region Ejecución de consultas
-        /// <summary>
-        /// Ejecuta SQL validado de solo lectura. Protege SELECT * para columnas TIME con ODBC.
-        /// </summary>
+       
+        // Realizado por: Raul
         public bool TryEjecutarConsulta(string sql, out DataTable result, out string error)
         {
             result = null;
@@ -143,7 +120,6 @@ namespace Capa_Controlador_Consultas
 
             try
             {
-                // Protege automáticamente los SELECT * contra columnas TIME
                 var sqlSeguro = RewriteSelectAllForOdbc(sql, _db);
                 result = _repo.EjecutarSelect(sqlSeguro.TrimEnd(new[] { ';', ' ' }));
                 return true;
@@ -168,8 +144,6 @@ namespace Capa_Controlador_Consultas
                 return false;
             }
         }
-
-        /// <summary>Intenta ejecutar una consulta guardada por Id.</summary>
         public bool TryPreviewById(string id, out DataTable result, out string error)
         {
             result = null; error = null;
@@ -178,7 +152,6 @@ namespace Capa_Controlador_Consultas
             return TryEjecutarConsulta(data.Item2, out result, out error);
         }
         #endregion
-        //linea 182 a 287 CRUD
         #region CRUD sobre Queries (persistidas en XML)
         public DataRow AddQuery(string name, string sql)
         {
@@ -284,7 +257,11 @@ namespace Capa_Controlador_Consultas
                 // opcional: log
             }
         }
+        // --------------------------------------------------------------------------
         #endregion
+
+        // Realizado por: DIEGO
+
         //linea 289 a 295 IDisponible
         #region IDisposable
         public void Dispose()
@@ -292,7 +269,6 @@ namespace Capa_Controlador_Consultas
             _cx?.Dispose();
         }
         #endregion
-        //linea 296 a 380 HELPERS DE PARSING
         #region Helpers de parsing / reescritura
         private static string LimpiarInicio(string sql)
         {
@@ -327,9 +303,6 @@ namespace Capa_Controlador_Consultas
             return s.Substring(start, i - start);
         }
 
-        /// <summary>
-        /// Construye un SELECT * que castea TIME a CHAR(10) (evita bug ODBC).
-        /// </summary>
         private string BuildSelectAllQuery(string tabla, string schema)
         {
             var cols = GetColumns(schema, tabla);
@@ -350,10 +323,6 @@ namespace Capa_Controlador_Consultas
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Reescribe "SELECT * FROM &lt;tabla&gt;" a una versión segura (TIME → CHAR).
-        /// Si no es un SELECT * puro, devuelve el SQL original.
-        /// </summary>
         public string RewriteSelectAllForOdbc(string sql, string schema)
         {
             if (string.IsNullOrWhiteSpace(sql)) return sql;
@@ -362,15 +331,12 @@ namespace Capa_Controlador_Consultas
             var rx = new Regex(@"^\s*select\s+\*\s+from\s+`?([A-Za-z0-9_]+)`?\s*$",
                                RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
             var m = rx.Match(s);
-            if (!m.Success) return sql;  // no es SELECT * puro
+            if (!m.Success) return sql;  
 
             var tabla = m.Groups[1].Value;
             return BuildSelectAllQuery(tabla, schema) + ";";
         }
 
-        /// <summary>
-        /// Versión para el llenado por tabla en UI (orden por 1ª columna).
-        /// </summary>
         public DataTable ConsultarTablaSeguro(string tabla, bool asc)
         {
             string q = BuildSelectAllQuery(tabla, _db);
@@ -378,7 +344,6 @@ namespace Capa_Controlador_Consultas
             return _repo.EjecutarSelect(q);
         }
         #endregion
-        //LINEA 382 a 415lectura de columnas
         #region Lectura de columnas desde information_schema
         private sealed class ColInfo
         {
@@ -413,5 +378,6 @@ namespace Capa_Controlador_Consultas
             return list;
         }
         #endregion
+        // ------------------------------------------------------------------------------------------------
     }
 }

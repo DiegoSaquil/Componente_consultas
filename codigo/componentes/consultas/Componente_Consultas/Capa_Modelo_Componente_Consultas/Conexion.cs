@@ -4,7 +4,7 @@ using System.Data.Odbc;
 
 namespace Capa_Modelo_Componente_Consultas
 {
-    // Juan Carlos Sandoval Quej 0901-22-4170
+    // Juan Carlos Sandoval Quej 0901-22-4170 16/09/2025
     public sealed class Conexion : IDisposable
     {
         private readonly string _dsn;
@@ -14,8 +14,6 @@ namespace Capa_Modelo_Componente_Consultas
         public OdbcConnection pConexion => _cn;
         #endregion
 
-
-        public Conexion() : this("Prueba1") { }
         public Conexion(string dsn)
         {
             if (string.IsNullOrWhiteSpace(dsn))
@@ -28,7 +26,7 @@ namespace Capa_Modelo_Componente_Consultas
             if (_cn == null)
             {
                 _cn = new OdbcConnection();
-                _cn.ConnectionString = $"Dsn={_dsn};"; // siempre inicializamos ConnectionString
+                _cn.ConnectionString = $"Dsn={_dsn};"; 
             }
 
             if (_cn.State != ConnectionState.Open)
@@ -43,16 +41,6 @@ namespace Capa_Modelo_Componente_Consultas
             _cn = null;
         }
 
-        // API académica (por si la piden)
-        public OdbcConnection conexion() => Abrir();
-        public void desconexion(OdbcConnection con)
-        {
-            try
-            {
-                if (con != null && con.State != ConnectionState.Closed)
-                    con.Close();
-            }
-            catch { /* opcional log */ }
-        }
+      
     }
 }
