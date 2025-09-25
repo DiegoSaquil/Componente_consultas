@@ -235,7 +235,7 @@ namespace Capa_Vista_Componente_Consultas
 
         // ----------------------------------------------------------------------------------------- //
 
-        // Realizado por:
+        // Realizado por:Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
             if (_uiBusy) return;

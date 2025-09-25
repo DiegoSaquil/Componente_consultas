@@ -77,7 +77,7 @@ namespace Capa_Modelo_Componente_Consultas
         }
         // ----------------------------------------------------------------------------------------- //
 
-        // Realizado por: RAUL
+        // Realizado por: Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025
         public DataTable ConsultarTablaOrdenada(string tabla, bool asc, List<ColumnaInfo> columnas)
         {
             if (columnas == null || columnas.Count == 0) return new DataTable();

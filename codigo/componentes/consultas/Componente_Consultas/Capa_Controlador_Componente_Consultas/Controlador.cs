@@ -102,7 +102,7 @@ namespace Capa_Controlador_Consultas
         #endregion
         #region Ejecución de consultas
        
-        // Realizado por: Raul
+        // Realizado por: Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025
         public bool TryEjecutarConsulta(string sql, out DataTable result, out string error)
         {
             result = null;
