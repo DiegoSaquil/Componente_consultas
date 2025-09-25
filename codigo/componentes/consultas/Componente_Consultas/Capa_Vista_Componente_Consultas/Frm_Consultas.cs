@@ -231,7 +231,7 @@ namespace Capa_Vista_Componente_Consultas
                     string order = "";
                     if (Rdb_ASC.Checked || (Rdb_Opcion1 != null && Rdb_Opcion1.Checked))
                     {
-                        string dir = Rdb_ASC.Checked ? "Rdb_ASC" : "DESC";
+                        string dir = Rdb_ASC.Checked ? "ASC" : "DESC";
                         if (!string.IsNullOrEmpty(colOrden))
                             order = $" ORDER BY `{colOrden}` {dir}";
                     }
@@ -282,7 +282,7 @@ namespace Capa_Vista_Componente_Consultas
                     string order = "";
                     if (Rdb_ASC.Checked || (Rdb_Opcion1 != null && Rdb_Opcion1.Checked))
                     {
-                        string dir = Rdb_ASC.Checked ? "Rdb_ASC" : "DESC";
+                        string dir = Rdb_ASC.Checked ? "ASC" : "DESC";
                         if (!string.IsNullOrEmpty(colOrden))
                             order = $" ORDER BY `{colOrden}` {dir}";
                     }
