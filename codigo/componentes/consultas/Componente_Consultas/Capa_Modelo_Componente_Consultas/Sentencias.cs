@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Capa_Modelo_Componente_Consultas
 {
-    // DIEGO
+    // Diego Fernando Saquil Gramajo 0901 - 22 - 4103 Guatemala 23 de septiembre
     public class ColumnaInfo
     {
         public string Nombre { get; set; }
@@ -75,6 +75,7 @@ namespace Capa_Modelo_Componente_Consultas
             }
             return cols;
         }
+        // ----------------------------------------------------------------------------------------- //
         // ----------------------------------------------------------------------------------------- //
 
         // Realizado por: Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025

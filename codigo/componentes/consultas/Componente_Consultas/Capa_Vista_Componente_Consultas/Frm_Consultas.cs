@@ -440,9 +440,11 @@ namespace Capa_Vista_Componente_Consultas
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void Gpb_Listado_Enter(object sender, EventArgs e)
+        private void Btn_Boton2_Click(object sender, EventArgs e)
         {
-
+            Frm_Consulta_Compleja complejas = new Frm_Consulta_Compleja();
+            complejas.Show();
+            this.Hide();
         }
     }
 }
