@@ -153,38 +153,40 @@ namespace Capa_Vista_Componente_Consultas
         // ----------------------------------------------------------------------------------------- //
 
         // Realizado por: Nelson Jose Godínez Méndez 0901-22-3550 22/09/2025
+        //Evento que dispara cuando cambia la selección de la lista de consultas guardadas
         private void Lst_Querys_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_uiBusy) return;
-            var id = Lst_Querys.SelectedValue as string;
-            if (string.IsNullOrEmpty(id)) return;
+            if (_uiBusy) return; //Si la interfaz está ocupada no hace nada
+            var id = Lst_Querys.SelectedValue as string; //Obtiene el ID de la consulta seleccionada
+            if (string.IsNullOrEmpty(id)) return; //Si no hay selección, termina
 
-            var data = _ctrl.GetQuery(id);
-            if (data == null) return;
-
+            var data = _ctrl.GetQuery(id); //Recupera la consulta desde el controlador que es nombre, sql
+            if (data == null) return; //Y si no termina
+            //Muestra el sql en el cuadro de texto
             Txt_Sql.Text = data.Item2;
-
+            //Intenta ejecutar una preview de la consulta 
             DataTable result; string error;
             if (_ctrl.TryPreviewById(id, out result, out error))
             {
-                Dgv_Sql.DataSource = result;
-                Dgv_Sql.ReadOnly = true;
-                Dgv_Sql.AllowUserToAddRows = false;
-                Dgv_Sql.AllowUserToDeleteRows = false;
+                // Si la consulta se ejecuta correctamente, muestra el resultado en el DataGridView
+                Dgv_Sql.DataSource = result; //Solo lectura
+                Dgv_Sql.ReadOnly = true; //No permitir filas nuevas
+                Dgv_Sql.AllowUserToAddRows = false; //No permitir eliminar filas
+                Dgv_Sql.AllowUserToDeleteRows = false; //No permite eliminar filas
                 Dgv_Sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
-
+        // Evento del botón "Editar"
         private void Btn_editar_Click(object sender, EventArgs e)
         {
-            if (_uiBusy) return;
+            if (_uiBusy) return;// Evita que se ejecute en paralelo
             _uiBusy = true;
             try
             {
                 var id = Lst_Querys.SelectedValue as string;
                 if (string.IsNullOrEmpty(id)) { MessageBox.Show("Selecciona una consulta de la lista."); return; }
 
-                var data = _ctrl.GetQuery(id);
+                var data = _ctrl.GetQuery(id);// Recupera (nombre, SQL) de la consulta
                 if (data == null) return;
 
                 using (var dlg = new Form())
@@ -198,32 +200,34 @@ namespace Capa_Vista_Componente_Consultas
 
                     var lbl2 = new Label { Text = "SQL (editable):", Left = 12, Top = 45, AutoSize = true };
                     var txtSql = new TextBox { Left = 12, Top = 65, Width = 808, Height = 260, Multiline = true, ScrollBars = ScrollBars.Both, Text = data.Item2, AcceptsTab = true };
-
+                    // Botón para probar la consulta antes de guardar
                     var btnProbar = new Button { Text = "Probar", Left = 12, Top = 332, Width = 80 };
                     var lblRes = new Label { Text = "Resultado:", Left = 100, Top = 336, AutoSize = true };
                     var dgvPrev = new DataGridView { Left = 12, Top = 360, Width = 808, Height = 260, ReadOnly = true, AllowUserToAddRows = false, AllowUserToDeleteRows = false, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells };
-
+                    // Botones de guardar/cancelar
                     var btnOk = new Button { Text = "Guardar", Left = 640, Top = 630, Width = 85, DialogResult = DialogResult.OK };
                     var btnCancel = new Button { Text = "Cancelar", Left = 735, Top = 630, Width = 85, DialogResult = DialogResult.Cancel };
-
+                    // Acción del botón "Probar"
                     btnProbar.Click += (s, ev) =>
                     {
                         DataTable r; string err;
                         if (!_ctrl.TryEjecutarConsulta(txtSql.Text, out r, out err))
                         {
+                            // Si hay error en el SQL, lo muestra en un MessageBox
                             MessageBox.Show(err, "Consulta SQL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        dgvPrev.DataSource = r;
+                        dgvPrev.DataSource = r;// Si funciona, muestra resultado en el DataGridView
                     };
-
+                    // Agrega los controles al formulario de edición
                     dlg.Controls.AddRange(new Control[] { lbl1, txtNombre, lbl2, txtSql, btnProbar, lblRes, dgvPrev, btnOk, btnCancel });
                     dlg.AcceptButton = btnOk; dlg.CancelButton = btnCancel;
-
+                    // Si el usuario presiona Guardar 
                     if (dlg.ShowDialog(this) == DialogResult.OK)
                     {
+                        // Actualiza la consulta en el controlador
                         _ctrl.UpdateQuery(id, txtNombre.Text.Trim(), txtSql.Text);
-
+                        // Ejecuta nuevamente la consulta para mostrar los resultados actualizados
                         DataTable r; string err;
                         if (_ctrl.TryEjecutarConsulta(txtSql.Text, out r, out err))
                             Dgv_Sql.DataSource = r;
