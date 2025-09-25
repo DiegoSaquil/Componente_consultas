@@ -9,51 +9,47 @@ using System.Linq;
 
 namespace Capa_Controlador_Consultas
 
-// Realizado por: Nelson 
+// Realizado por: Nelson Jose Godínez Méndez 0901-22-3550 22/09/2025 
 {
     public class Controlador : IDisposable
     {
         #region Campos (privados)
-        private readonly string _dsn;
-        private readonly string _db;
-
+        private readonly string _dsn; //Nombre del origen de datos de odbc DSN
+        private readonly string _db; // Nombre de la base de datos 
+        //Encapsulación de sentencias y conexión
         private readonly Conexion _cx;
         private readonly Sentencias _repo;
 
         private readonly string _filePathXml;
         #endregion
         #region Propiedades públicas (estándar "p" + PascalCase)
-        public DataTable pQueries => Queries;
         #endregion
        
         #region Propiedades internas/compatibilidad
-        /// <summary>
-        /// Tabla en memoria con las consultas guardadas (se mantiene por compatibilidad).
-        /// Use <see cref="pQueries"/> para el estándar público.
-        /// </summary>
         public DataTable Queries { get; private set; }
         #endregion
         #region Ctor / Inicialización
         public Controlador(string dsn, string databaseName)
         {
+            // Validación de parámetros, si no envía un DSN o nombre de BD
             if (dsn == null) throw new ArgumentNullException(nameof(dsn));
             if (databaseName == null) throw new ArgumentNullException(nameof(databaseName));
-
+            //Guarda valores en dsn
             _dsn = dsn;
             _db = databaseName;
 
             _cx = new Conexion(_dsn);
             _repo = new Sentencias(_cx, _db);
-
+            //Define la ruta para guardar las consultas en el directorio application data (APPDATA)
             var root = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var dir = Path.Combine(root, "ConsultasUMG");
-            Directory.CreateDirectory(dir);
-            _filePathXml = Path.Combine(dir, "queries.xml");
-
+            Directory.CreateDirectory(dir); //Aquí crea la carpeta si no lo existe
+            _filePathXml = Path.Combine(dir, "queries.xml"); 
+            //Construye la tabla en memoria que almacenará las consultas
             Queries = BuildTable();
             LoadQueries();
 
-            
+            //Cada vez que se actualice, borra o agrega una fila y se guardan los cambios en el XML
             Queries.RowChanged += (s, e) => SaveQueries();
             Queries.RowDeleted += (s, e) => SaveQueries();
             Queries.TableNewRow += (s, e) => SaveQueries();
