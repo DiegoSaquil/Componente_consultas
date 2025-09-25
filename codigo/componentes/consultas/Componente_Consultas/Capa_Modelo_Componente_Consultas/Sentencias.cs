@@ -78,42 +78,67 @@ namespace Capa_Modelo_Componente_Consultas
         // ----------------------------------------------------------------------------------------- //
 
         // Realizado por: Bryan Raul Ramirez Lopez 0901-21-8202 22/09/2025
+
+        // Método para consultar una tabla y devolverla ordenada
         public DataTable ConsultarTablaOrdenada(string tabla, bool asc, List<ColumnaInfo> columnas)
         {
+            // Si no se envían columnas o está vacía la lista, se devuelve un DataTable vacío
             if (columnas == null || columnas.Count == 0) return new DataTable();
 
+            // Lista para almacenar las columnas que se van a seleccionar en el SELECT
             var selectCols = new List<string>(columnas.Count);
+            // Recorremos todas las columnas enviadas en la lista
             foreach (var c in columnas)
             {
+            // Si el tipo de la columna es "time" (hora), se castea a CHAR(10) para evitar problemas al mostrarla
                 if (string.Equals(c.Tipo, "time", StringComparison.OrdinalIgnoreCase))
                     selectCols.Add("CAST(`" + c.Nombre + "` AS CHAR(10)) AS `" + c.Nombre + "`");
                 else
+           // Caso contrario, se agrega directamente el nombre de la columna
                     selectCols.Add("`" + c.Nombre + "`");
             }
-
-            string order = asc ? "Rdb_ASC" : "DESC";
+            // Se define el orden de la consulta: ASC si es ascendente, DESC si es descendente
+            string order = asc ? "ASC" : "DESC";
+            // Se toma la primera columna de la lista para usarla en la cláusula ORDER BY
             string firstCol = columnas[0].Nombre;
+            // Se construye la consulta SQL completa
             string sql = "SELECT " + string.Join(", ", selectCols) +
                          " FROM `" + _db + "`.`" + tabla + "` ORDER BY `" + firstCol + "` " + order + ";";
-
-            var cn = _cx.Abrir(); 
+            // Abre la conexión con la base de datos
+            var cn = _cx.Abrir();
+            // Se usa un DataAdapter para ejecutar la consulta y llenar el DataTable
             using (var da = new OdbcDataAdapter())
             {
+                // Se asigna el comando SQL al DataAdapter
                 da.SelectCommand = new OdbcCommand(sql, cn); 
                 var dt = new DataTable();
+                // Llena el DataTable con los resultados de la consulta
                 da.Fill(dt);
+
+                // Devuelve el DataTable ya con los datos obtenidos
                 return dt;
             }
         }
 
+        // Método para ejecutar un SELECT cualquiera (ya armado como string) y devolver el resultado
         public DataTable EjecutarSelect(string sql)
         {
-            var cn = _cx.Abrir(); 
+            // Abre la conexión con la base de datos
+            var cn = _cx.Abrir();
+
+            // Se usa un DataAdapter para ejecutar la consulta y llenar el DataTable
             using (var da = new OdbcDataAdapter())
             {
+                // Se asigna el comando SQL al DataAdapter
                 da.SelectCommand = new OdbcCommand(sql, cn);
+
+                // Se crea un DataTable vacío para almacenar los resultados
                 var dt = new DataTable();
+
+                // Llena el DataTable con los resultados de la consulta SQL
                 da.Fill(dt);
+
+                // Devuelve el DataTable ya con los datos
                 return dt;
             }
         }
