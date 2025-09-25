@@ -423,7 +423,7 @@ namespace Capa_Vista_Componente_Consultas
         }
 
         // -------------------------------------------------------------------------------------------
-        
+        // Luis Alejandro Herrera 0901-22-12368 23/09/2025
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.Owner != null) this.Owner.Show();
